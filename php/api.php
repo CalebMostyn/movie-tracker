@@ -17,7 +17,7 @@ if ($url) {
     curl_close($ch);
 
     // Return the response
-    echo $response;
+    echo "<html>testing testing </html>//$response;
 } else {
     echo 'URL parameter is missing.';
 }
