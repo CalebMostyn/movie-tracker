@@ -1,6 +1,6 @@
 async function fetchHtml(username) {
     try {
-        const response = await fetch(`../php/api.php?url=${encodeURIComponent('https://letterboxd.com/' + username)}`);
+        const response = await fetch(`../php/api.php?url=${encodeURIComponent('https://example.com')}`);
 
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -12,7 +12,7 @@ async function fetchHtml(username) {
         return null;
     }
 }
-// https://letterboxd.com/${username}
+// 'https://letterboxd.com/' + username)
 
 function get_num_movies_per_year(doc) {
     const statisticElements = doc.querySelectorAll('h4.profile-statistic.statistic');
