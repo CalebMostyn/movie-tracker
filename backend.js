@@ -1,6 +1,6 @@
 async function fetchHtml(username) {
     try {
-        const response = await fetch(`http://caleb-mostyn.com:3000/fetch-html?username=${username}`); // Fetch from your proxy
+        const response = await fetch(`https://caleb-mostyn.com:3000/fetch-html?username=${username}`); // Fetch from your proxy
         
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
