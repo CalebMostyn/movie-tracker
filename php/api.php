@@ -1,6 +1,6 @@
 <?php
 $username = $_GET['username'] ?? '';
-$url = 'https://letterboxd.com/' + $username + "/";
+$url = 'https://letterboxd.com/' . $username . "/";
 
 if ($url) {
     $ch = curl_init();
