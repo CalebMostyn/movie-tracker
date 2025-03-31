@@ -12,7 +12,6 @@ async function fetchHtml(username) {
         return null;
     }
 }
-// 'https://letterboxd.com/' + username)
 
 function get_num_movies_per_year(doc) {
     const statisticElements = doc.querySelectorAll('h4.profile-statistic.statistic');
