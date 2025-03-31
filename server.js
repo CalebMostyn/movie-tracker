@@ -7,14 +7,27 @@ const cors = require("cors");
 const axios = require("axios");
 
 const app = express();
-app.use(cors());
+
+const corsOptions = {
+  origin: 'https://caleb-mostyn.com', // Allow requests from your site
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
 
 // Load SSL certificate and private key files
-const privateKey = fs.readFileSync('/path/to/your/keys/d1cb9_3381b_0f11039c64d0ad4102dbdea6596a14dd.key', 'utf8');
-const certificate = fs.readFileSync('/path/to/your/certs/caleb_mostyn_com_d1cb9_3381b_1774933585_e1a82ba20934f1659c03df31d9891725.crt', 'utf8');
+const privateKey = 
+fs.readFileSync('/home/calebmos/ssl/keys/da4f3_bcf91_47a9771f70a6115da29a37e906101851.key', 
+'utf8');
+const certificate = 
+fs.readFileSync('/home/calebmos/ssl/certs/_wildcard__caleb_mostyn_com_da4f3_bcf91_1751170170_f0263663d2af639616ca11cb0fa83cae.crt', 
+'utf8');
+const ca = fs.readFileSync('/home/calebmos/ssl/ca/bundle.crt', 'utf8'); 
+// If you have an intermediate CA certificate
 
 // Combine the certificate and key into the credentials object
-const credentials = { key: privateKey, cert: certificate };
+const credentials = { key: privateKey, cert: certificate, ca: ca };
 
 // Get port from command-line argument or default to 3000
 const port = process.argv[2] || 3000;
