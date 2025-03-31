@@ -1,7 +1,7 @@
 async function fetchHtml(username) {
     try {
-        const response = await fetch(`https://caleb-mostyn.com:3000/fetch-html?username=${username}`); // Fetch from your proxy
-        
+        const response = await fetch(`../php/api.php?url=${encodeURIComponent('https://letterboxd.com/' + username)}`);
+
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -12,6 +12,7 @@ async function fetchHtml(username) {
         return null;
     }
 }
+// https://letterboxd.com/${username}
 
 function get_num_movies_per_year(doc) {
     const statisticElements = doc.querySelectorAll('h4.profile-statistic.statistic');
