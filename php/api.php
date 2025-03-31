@@ -1,6 +1,6 @@
 <?php
-
-$url = $_GET['url'] ?? '';
+$username = $_GET['username'] ?? '';
+$url = 'https://letterboxd.com/' + $username + "/";
 
 if ($url) {
     $ch = curl_init();
@@ -17,6 +17,6 @@ if ($url) {
         echo $response;
     }
 } else {
-    echo 'URL parameter is missing.';
+    echo 'Username is Required';
 }
 ?>
