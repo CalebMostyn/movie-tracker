@@ -1,6 +1,8 @@
+require('dotenv').config();
+
 const express = require("express");
 const cors = require("cors");
-const puppeteer = require("puppeteer");
+const axios = require("axios");
 
 const app = express();
 app.use(cors());
@@ -8,7 +10,6 @@ app.use(cors());
 // Get port from command-line argument or default to 3000
 const port = process.argv[2] || 3000;
 
-// Make the server listen on all network interfaces (0.0.0.0) instead of localhost
 app.listen(port, "0.0.0.0", () => {
     console.log(`Proxy running on http://0.0.0.0:${port}`);
 });
@@ -21,19 +22,32 @@ app.get("/fetch-html", async (req, res) => {
     }
 
     try {
-        const browser = await puppeteer.launch({
-            headless: "new",  // Keep in headless mode
-            executablePath: '/home/calebmos/chrome-linux/chrome',  // Path to the 'chrome' executable
-            args: ["--no-sandbox", "--disable-setuid-sandbox"]  // Add flags for headless environment
+        // Replace with your actual Browserless API key
+        const browserlessApiKey = process.env.BROWSERLESS_API_KEY;
+
+        // URL to fetch
+        const url = `https://letterboxd.com/${username}`;
+
+        // Log the request for debugging purposes
+        console.log(`Fetching URL: ${url}`);
+
+        // Construct the request body (without waitForSelector)
+        const requestBody = {
+            url: url
+        };
+
+        // Construct the full API URL with the query parameter waitForSelector
+        const apiUrl = `https://chrome.browserless.io/content?token=${browserlessApiKey}&waitForSelector=body`;
+
+        // Make the API call to Browserless
+        const response = await axios.post(apiUrl, requestBody, {
+            headers: { "Content-Type": "application/json" }
         });
-        const page = await browser.newPage();
-        await page.goto(`https://letterboxd.com/${username}`, { waitUntil: "networkidle2" });
 
-        const html = await page.content(); // Get fully rendered HTML
-        await browser.close();
-
-        res.send(html);
+        // The response data contains the rendered HTML
+        res.send(response.data);
     } catch (error) {
-        res.status(500).send(`Error fetching page - ${error}`);
+        console.error("Error details:", error.response ? error.response.data : error.message);
+        res.status(500).send(`Error fetching page - ${error.message}`);
     }
 });
