@@ -1,6 +1,6 @@
 async function fetchHtml(username) {
     try {
-        const response = await fetch(`../php/api.php?url=${encodeURIComponent('https://letterboxd.com/' + username + "/")}`);
+        const response = await fetch(`php/api.php?url=${encodeURIComponent('https://letterboxd.com/' + username + "/")}`);
 
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
