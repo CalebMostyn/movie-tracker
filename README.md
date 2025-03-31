@@ -7,29 +7,4 @@ Enter a [Letterboxd](https://letterboxd.com) username and a goal for how many mo
 Films watched this year is based on Letterboxd diary entries, which keeps a count of the number of unique films you have watched this calendar year. This includes rewatches, but does not include movies you have rewatched within the same calendar year.
 
 # Requirements
-Requires Node.js as well as some packages.
-
-With the `npm` package manager, you can run:
-```bash
-npm install puppeteer express cors
-```
-
-# Setup
-Cloning this repo to your hosting location, the only other step is to get the Node.js server running locally in the same location.
-
-Since the Letterboxd API is not available openly, let alone for personal projects, data is retreived from the actual Letterboxd web page of the user. [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) is not suitable as the values needed are populated by JavaScript, hence the need for Node.js.
-
-The Node.js server provides a pseudo-api for fetching the rendered page such that relevent data can be retreived. To setup the server:
-```bash
-./run-server.sh [-v] [port_num]
-```
-The `-v` designates verbose output from the script, and the port number can also be optionally specified. The default port number, however is 3000, and this is hardcoded into the HTML.
-
-To turn off the server:
-```bash
-./kill-server.sh
-```
-
-This however assumes that you only have one Node.js server running with the title `server.js`, so if that is not the case, you may want to kill the process manually.
-
-All of the content is in `index.html`, but you can easily rename this page to fit the needs of wherever you may want this located.
+Once cloned, this should be able to run easily if setup properly on Apache or a similar web-server software. Importantly, the server must support php, and the php will require `curl` for proper scraping of the Letterboxd website.

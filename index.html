@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Tracker</title>
-    <script src="backend.js"></script>
+    <script src="javascript/backend.js"></script>
     <script>
         async function fetchData(username) {
             const htmlText = await fetchHtml(username);
             if (!htmlText) {
-                document.getElementById('output').textContent = 'Error fetching data';
+                // document.getElementById('output').textContent = 'Error fetching data';
+                console.log('Error fetching data');
+                console.log(`html returned: ${htmlText}`);
                 return;
             }
         
