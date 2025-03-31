@@ -21,7 +21,11 @@ app.get("/fetch-html", async (req, res) => {
     }
 
     try {
-        const browser = await puppeteer.launch({ headless: "new" });
+        const browser = await puppeteer.launch({
+            headless: "new",  // Keep in headless mode
+            executablePath: '/home/calebmos/chrome-linux/chrome',  // Path to the 'chrome' executable
+            args: ["--no-sandbox", "--disable-setuid-sandbox"]  // Add flags for headless environment
+        });
         const page = await browser.newPage();
         await page.goto(`https://letterboxd.com/${username}`, { waitUntil: "networkidle2" });
 
