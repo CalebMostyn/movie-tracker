@@ -2,7 +2,7 @@
 Letterboxd-based Tracker for Movie Enthusiasts
 
 # Usage
-Enter a [Letterboxd](letterboxd.com) username and a goal for how many movies you'd like to watch this year to see some statistics on your progress. You'll see the days per movie required to meet your goal, how many days we are into the current year, as well as how many movies you need to catch up to the proper pace.
+Enter a [Letterboxd](https://letterboxd.com) username and a goal for how many movies you'd like to watch this year to see some statistics on your progress. You'll see the days per movie required to meet your goal, how many days we are into the current year, as well as how many movies you need to catch up to the proper pace.
 
 Films watched this year is based on Letterboxd diary entries, which keeps a count of the number of unique films you have watched this calendar year. This includes rewatches, but does not include movies you have rewatched within the same calendar year.
 

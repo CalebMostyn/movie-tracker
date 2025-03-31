@@ -1,0 +1,4 @@
+node_modules/
+*nohup*
+package-lock.json
+package.json
