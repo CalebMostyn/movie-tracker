@@ -30,6 +30,6 @@ app.get("/fetch-html", async (req, res) => {
 
         res.send(html);
     } catch (error) {
-        res.status(500).send("Error fetching page");
+        res.status(500).send(`Error fetching page - ${error}`);
     }
 });
