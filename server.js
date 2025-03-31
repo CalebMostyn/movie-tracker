@@ -8,6 +8,11 @@ app.use(cors());
 // Get port from command-line argument or default to 3000
 const port = process.argv[2] || 3000;
 
+// Make the server listen on all network interfaces (0.0.0.0) instead of localhost
+app.listen(port, "0.0.0.0", () => {
+    console.log(`Proxy running on http://0.0.0.0:${port}`);
+});
+
 app.get("/fetch-html", async (req, res) => {
     const username = req.query.username; // Get username from query parameters
 
@@ -28,5 +33,3 @@ app.get("/fetch-html", async (req, res) => {
         res.status(500).send("Error fetching page");
     }
 });
-
-app.listen(port, () => console.log(`Proxy running on http://localhost:${port}`));
