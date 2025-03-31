@@ -15,11 +15,13 @@ npm install puppeteer express cors
 ```
 
 # Setup
+Cloning this repo to your hosting location, the only other step is to get the Node.js server running locally in the same location.
+
 Since the Letterboxd API is not available openly, let alone for personal projects, data is retreived from the actual Letterboxd web page of the user. [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) is not suitable as the values needed are populated by JavaScript, hence the need for Node.js.
 
 The Node.js server provides a pseudo-api for fetching the rendered page such that relevent data can be retreived. To setup the server:
 ```bash
-./run-server.sh <-v> <port_num>
+./run-server.sh [-v] [port_num]
 ```
 The `-v` designates verbose output from the script, and the port number can also be optionally specified. The default port number, however is 3000, and this is hardcoded into the HTML.
 
@@ -29,3 +31,5 @@ To turn off the server:
 ```
 
 This however assumes that you only have one Node.js server running with the title `server.js`, so if that is not the case, you may want to kill the process manually.
+
+All of the content is in `index.html`, but you can easily rename this page to fit the needs of wherever you may want this located.
